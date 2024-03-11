@@ -61,7 +61,7 @@ Your Inventory app should have categories and items, so when the user goes to th
 
 1. Set up my database schemas and models
 
-1. [Download the MDN `populated.js` file]("https://raw.githubusercontent.com/hamishwillee/express-locallibrary-tutorial/master/populatedb.js") and edit it, or re-write it using the specifics of my models. Then run it to populate my database.
+1. [Download the MDN `populatedb.js` file]("https://raw.githubusercontent.com/hamishwillee/express-locallibrary-tutorial/master/populatedb.js") and edit it, or re-write it using the specifics of my models. Then run it to populate my database.
 
 1. Set up the routes and controllers
 
@@ -74,3 +74,11 @@ Your Inventory app should have categories and items, so when the user goes to th
    - Review the [Cloudinary documentation]("https://cloudinary.com/documentation/node_integration")
 
 1. Deploy the app
+
+## 3/11/24
+
+Today I need to:
+- [x] Create a new MongoDB collection
+- [x] Set up my database schemas and models
+- [ ] Write a `populatedb.js` script and run it to populate my database
+- [ ] Set up routes and controllers

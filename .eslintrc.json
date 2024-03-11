@@ -10,6 +10,7 @@
     },
     "rules": {
         "consistent-return": "off",
+        "func-names": "off",
         "import/newline-after-import": "off",
         "import/order": "off",
         "no-console": "off",
@@ -20,6 +21,7 @@
             "props": false
         }],
         "no-plusplus": "off",
+        "no-underscore-dangle": "off",
         "no-unused-expressions": ["error", {
             "allowTernary": true
         }],

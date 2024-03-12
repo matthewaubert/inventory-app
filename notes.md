@@ -175,4 +175,14 @@ Today I need to:
       - price: 217
       - qty: 15
 - [x] Write a `populatedb.js` script and run it to populate my database
-- [ ] Set up routes and controllers
+
+## 3/12/24
+
+Today I need to:
+- [x] Set up routes and controllers
+  - [x] `inventory/` - home/index page
+  - [x] `inventory/<objects>` - list of all items or categories
+  - [x] `inventory/<object>/<id>` - detail page for a specific item or category
+  - [x] `inventory/<object>/create` - form to create a new item or category
+  - [x] `inventory/<object>/<id>/update` - form to update a specific item or category
+  - [x] `inventory/<object>/<id>/delete` - form to delete a specific item or category

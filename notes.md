@@ -186,3 +186,13 @@ Today I need to:
   - [x] `inventory/<object>/create` - form to create a new item or category
   - [x] `inventory/<object>/<id>/update` - form to update a specific item or category
   - [x] `inventory/<object>/<id>/delete` - form to delete a specific item or category
+- [x] Research and install Tailwind CSS
+- [ ] Create all 'READ' views
+  - [ ] index view
+  - [ ] item list view
+  - [ ] category list view
+  - [ ] item detail view
+  - [ ] category detail view
+- [ ] Create all forms and build out controllers for create action
+- [ ] Create all forms and build out controllers for update action
+- [ ] Create all forms and build out controllers for delete action

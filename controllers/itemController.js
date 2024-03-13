@@ -25,6 +25,7 @@ exports.index = asyncHandler(async (req, res, next) => {
 
 // display list of all Items
 exports.itemList = asyncHandler(async (req, res, next) => {
+  // get all items
   const allItems = await Item.find({}, 'name price').sort({ name: 1 }).exec();
 
   res.render('item-list', {
@@ -36,6 +37,7 @@ exports.itemList = asyncHandler(async (req, res, next) => {
 
 // display detail page for a specific Item
 exports.itemDetail = asyncHandler(async (req, res, next) => {
+  // get item w/ `_id` that matches `req.params.id`
   const item = await Item.findById(req.params.id).populate('category').exec();
 
   if (!item) {
@@ -49,7 +51,17 @@ exports.itemDetail = asyncHandler(async (req, res, next) => {
 
 // display Item create form on GET
 exports.itemCreateGet = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Item create GET');
+  // get all categories and items in parallel
+  const [allCategories, allItems] = await Promise.all([
+    Category.find().sort({ name: 1 }).exec(),
+    Item.find().sort({ name: 1 }).exec(),
+  ]);
+
+  res.render('item-create', {
+    title: 'Create Item',
+    categoryList: allCategories,
+    itemList: allItems,
+  });
 });
 
 // handle Item create on POST

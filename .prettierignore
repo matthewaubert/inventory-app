@@ -63,3 +63,6 @@ typings/
 # header and footer template partials
 views/partials/header.ejs
 views/partials/footer.ejs
+
+# other views
+views/item-create.ejs

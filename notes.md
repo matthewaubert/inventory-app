@@ -192,12 +192,24 @@ Today I need to:
 ## 3/13/24
 
 Today I need to:
-- [x] Create all 'READ' views
+- [x] Create all views and build out controllers for 'Read' action
   - [x] index view
   - [x] item list view
   - [x] category list view
   - [x] item detail view
   - [x] category detail view
-- [ ] Create all forms and build out controllers for create action
-- [ ] Create all forms and build out controllers for update action
-- [ ] Create all forms and build out controllers for delete action
+- [ ] Create all forms/views and build out controllers for 'Create' action
+  - [x] create item GET
+  - [ ] create item POST
+  - [ ] create category GET
+  - [ ] create category POST
+- [ ] Create all forms/views and build out controllers for 'Update' action
+  - [ ] update item GET
+  - [ ] update item POST
+  - [ ] update category GET
+  - [ ] update category POST
+- [ ] Create all forms/views and build out controllers for 'Delete' action
+  - [ ] delete item GET
+  - [ ] delete item POST
+  - [ ] delete category GET
+  - [ ] delete category POST

@@ -8,12 +8,16 @@
     Equipment Store inventory.
   </p>
 </div>
-<div>
+<div class="mb-4">
   <h3 class="text-3xl mb-2">The inventory has the following in stock:</h3>
   <ul>
     <li><strong>Types of items:</strong> <%= numItems %></li>
     <li><strong>Total quantity of items:</strong> <%= qtyItems %></li>
     <li><strong>Categories of items:</strong> <%= numCategories %></li>
   </ul>
+</div>
+<div class="flex gap-2">
+  <%- include('./partials/create-button', { type: 'item' }) %>
+  <%- include('./partials/create-button', { type: 'category' }) %>
 </div>
 <%- include('./partials/footer') %>

@@ -1,0 +1,75 @@
+<%- include('./partials/header') %>
+<h2 class="text-2xl mb-2"><%= title %></h2>
+<form action="" method="POST" class="flex flex-col gap-3">
+  <label class="flex flex-col gap-1">
+    Name:
+    <input
+      type="text"
+      name="name"
+      placeholder="Name of item"
+      class="border border-gray-400 rounded px-2 py-1"
+      required
+      value="<%= locals.item ? item.title : '' %>"
+    />
+  </label>
+  <label class="flex flex-col gap-1">
+    Category:
+    <select
+      name="category"
+      class="border border-gray-400 rounded px-1 py-1"
+      required
+    >
+      <option value="">--Please select a category--</option>
+      <% for (const category of categoryList) { %>
+      <% const selected = locals.item && category._id.toString() === item.category._id.toString() ? 'selected' : '' %>
+      <option value="<%= category._id %>" <%= selected %>>
+        <%= category.name %>
+      </option>
+      <% } %>
+    </select>
+  </label>
+  <label class="flex flex-col gap-1">
+    Price:
+    <input
+      type="number"
+      name="price"
+      placeholder="Price of item"
+      min="0.01"
+      step="any"
+      class="border border-gray-400 rounded px-2 py-1"
+      required
+      value="<%= locals.item ? item.price : '' %>"
+    />
+  </label>
+  <label class="flex flex-col gap-1">
+    Quantity:
+    <input
+      type="number"
+      placeholder="Quantity of item in stock"
+      name="quantity"
+      min="1"
+      step="1"
+      class="border border-gray-400 rounded px-2 py-1"
+      required
+      value="<%= locals.item ? item.quantity : '' %>"
+    />
+  </label>
+  <label class="flex flex-col gap-1">
+    Description:
+    <textarea
+      name="description"
+      cols="30"
+      rows="10"
+      placeholder="Description of item"
+      class="border border-gray-400 rounded px-2 py-1"
+      required
+    ><%= locals.item ? item.description : '' %></textarea>
+  </label>
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-600 text-white rounded px-3 py-2 w-fit"
+  >
+    Submit
+  </button>
+</form>
+<%- include('./partials/footer') %>

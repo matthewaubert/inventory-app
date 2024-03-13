@@ -190,8 +190,8 @@ Today I need to:
 - [x] Create base template (header and footer)
 - [ ] Create all 'READ' views
   - [x] index view
-  - [ ] item list view
-  - [ ] category list view
+  - [x] item list view
+  - [x] category list view
   - [ ] item detail view
   - [ ] category detail view
 - [ ] Create all forms and build out controllers for create action

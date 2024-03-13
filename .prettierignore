@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# header and footer template partials
+views/partials/header.ejs
+views/partials/footer.ejs

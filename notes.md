@@ -187,6 +187,7 @@ Today I need to:
   - [x] `inventory/<object>/<id>/update` - form to update a specific item or category
   - [x] `inventory/<object>/<id>/delete` - form to delete a specific item or category
 - [x] Research and install Tailwind CSS
+- [x] Create base template (header and footer)
 - [ ] Create all 'READ' views
   - [ ] index view
   - [ ] item list view

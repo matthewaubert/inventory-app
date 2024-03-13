@@ -192,7 +192,7 @@ Today I need to:
   - [x] index view
   - [x] item list view
   - [x] category list view
-  - [ ] item detail view
+  - [x] item detail view
   - [ ] category detail view
 - [ ] Create all forms and build out controllers for create action
 - [ ] Create all forms and build out controllers for update action

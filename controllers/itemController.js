@@ -1,5 +1,6 @@
 const Item = require('../models/item');
 const Category = require('../models/category');
+const { formatPrice } = require('../utils/util');
 
 const asyncHandler = require('express-async-handler');
 
@@ -24,7 +25,13 @@ exports.index = asyncHandler(async (req, res, next) => {
 
 // display list of all Items
 exports.itemList = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Item list');
+  const allItems = await Item.find({}, 'name price').sort({ name: 1 }).exec();
+
+  res.render('item-list', {
+    title: 'All Items',
+    itemList: allItems,
+    formatPrice,
+  });
 });
 
 // display detail page for a specific Item

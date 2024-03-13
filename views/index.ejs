@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
-</html>
+<%- include('./partials/header') %>
+<div class="mb-4">
+  <h3 class="text-3xl mb-2">
+    Welcome to the <em>Outdoor Equipment Store Inventory</em>.
+  </h3>
+  <p>
+    Here you can create, read, update, and delete items from the Outdoor
+    Equipment Store inventory.
+  </p>
+</div>
+<div>
+  <h3 class="text-3xl mb-2">The inventory has the following in stock:</h3>
+  <ul>
+    <li><strong>Types of items:</strong> <%= numItems %></li>
+    <li><strong>Total quantity of items:</strong> <%= qtyItems %></li>
+    <li><strong>Categories of items:</strong> <%= numCategories %></li>
+  </ul>
+</div>
+<%- include('./partials/footer') %>

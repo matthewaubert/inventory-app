@@ -1,9 +1,25 @@
 const Item = require('../models/item');
+const Category = require('../models/category');
+
 const asyncHandler = require('express-async-handler');
 
 // display home page
 exports.index = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: site home page');
+  // get details of items and categories in parallel
+  const [numItems, allItems, numCategories] = await Promise.all([
+    Item.countDocuments({}).exec(),
+    Item.find({}, 'quantity').exec(),
+    Category.countDocuments({}).exec(),
+  ]);
+
+  const qtyItems = allItems.reduce((sum, item) => sum + item.quantity, 0);
+
+  res.render('index', {
+    title: 'OES Inventory',
+    numItems,
+    qtyItems,
+    numCategories,
+  });
 });
 
 // display list of all Items

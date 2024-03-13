@@ -189,7 +189,7 @@ Today I need to:
 - [x] Research and install Tailwind CSS
 - [x] Create base template (header and footer)
 - [ ] Create all 'READ' views
-  - [ ] index view
+  - [x] index view
   - [ ] item list view
   - [ ] category list view
   - [ ] item detail view

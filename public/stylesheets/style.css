@@ -569,6 +569,10 @@ video {
   max-width: 1280px;
 }
 
+.flex-col {
+  flex-direction: column;
+}
+
 .items-baseline {
   align-items: baseline;
 }
@@ -579,6 +583,14 @@ video {
 
 .gap-4 {
   gap: 1rem;
+}
+
+.gap-2 {
+  gap: 0.5rem;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .px-10 {

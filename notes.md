@@ -188,12 +188,16 @@ Today I need to:
   - [x] `inventory/<object>/<id>/delete` - form to delete a specific item or category
 - [x] Research and install Tailwind CSS
 - [x] Create base template (header and footer)
-- [ ] Create all 'READ' views
+
+## 3/13/24
+
+Today I need to:
+- [x] Create all 'READ' views
   - [x] index view
   - [x] item list view
   - [x] category list view
   - [x] item detail view
-  - [ ] category detail view
+  - [x] category detail view
 - [ ] Create all forms and build out controllers for create action
 - [ ] Create all forms and build out controllers for update action
 - [ ] Create all forms and build out controllers for delete action

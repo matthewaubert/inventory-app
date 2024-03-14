@@ -41,6 +41,7 @@ exports.itemDetail = asyncHandler(async (req, res, next) => {
   // get item w/ `_id` that matches `req.params.id`
   const item = await Item.findById(req.params.id).populate('category').exec();
 
+  // if Item not found, throw error
   if (!item) {
     const err = new Error('Item not found');
     err.status = 404;
@@ -146,7 +147,24 @@ exports.itemDeletePost = asyncHandler(async (req, res, next) => {
 
 // display Item update form on GET
 exports.itemUpdateGet = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Item update GET');
+  // get Item, and all Categories in parallel
+  const [item, allCategories] = await Promise.all([
+    Item.findById(req.params.id).populate('category').exec(),
+    Category.find().sort({ name: 1 }).exec(),
+  ]);
+
+  // if Item not found, throw error
+  if (!item) {
+    const err = new Error('Item not found');
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render('item-create', {
+    title: 'Update Item',
+    categoryList: allCategories,
+    item,
+  });
 });
 
 // handle Item update on POST

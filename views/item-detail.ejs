@@ -26,8 +26,13 @@
   </div>
 
   <!-- prettier-ignore -->
-  <%- locals.delete
-    ? include('./partials/delete-form', { type: 'item', id: item._id})
-    : include('./partials/delete-button', { type: 'item', id: item._id }) %>
+  <% if (locals.delete) { %>
+    <%- include('./partials/delete-form', { type: 'item', id: item._id}) %>
+  <% } else { %>
+  <span class="flex gap-2">
+    <%- include('./partials/delete-button', { type: 'item', id: item._id }) %>
+    <%- include('./partials/update-button', { type: 'item', id: item._id }) %>
+  </span>
+  <% } %>
 </div>
 <%- include('./partials/footer') %>

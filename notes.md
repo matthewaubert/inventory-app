@@ -213,7 +213,7 @@ Today I need to:
   - [x] delete category GET
   - [x] delete category POST
 - [ ] Create all forms/views and build out controllers for 'Update' action
-  - [ ] update item GET
+  - [x] update item GET
   - [ ] update item POST
   - [ ] update category GET
   - [ ] update category POST

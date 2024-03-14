@@ -198,11 +198,11 @@ Today I need to:
   - [x] category list view
   - [x] item detail view
   - [x] category detail view
-- [ ] Create all forms/views and build out controllers for 'Create' action
+- [x] Create all forms/views and build out controllers for 'Create' action
   - [x] create item GET
   - [x] create item POST
   - [x] create category GET
-  - [ ] create category POST
+  - [x] create category POST
 - [ ] Create all forms/views and build out controllers for 'Update' action
   - [ ] update item GET
   - [ ] update item POST

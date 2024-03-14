@@ -7,6 +7,7 @@ const { encode } = require('he');
 
 // display list of all Categories
 exports.categoryList = asyncHandler(async (req, res, next) => {
+  // get all categories
   const allCategories = await Category.find({}, 'name')
     .sort({ name: 1 })
     .exec();
@@ -19,9 +20,10 @@ exports.categoryList = asyncHandler(async (req, res, next) => {
 
 // display detail page for a specific Category
 exports.categoryDetail = asyncHandler(async (req, res, next) => {
+  // get category w/ `_id` that matches `req.params.id` & items in category
   const [category, categoryItems] = await Promise.all([
     Category.findById(req.params.id).exec(),
-    Item.find({ category: req.params.id }, 'name price quantity').exec(),
+    Item.find({ category: req.params.id }).sort({ name: 1 }).exec(),
   ]);
 
   if (!category) {
@@ -82,7 +84,21 @@ exports.categoryCreatePost = [
 
 // display Category delete form on GET
 exports.categoryDeleteGet = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Category delete GET');
+  // get category w/ `_id` that matches `req.params.id` & items in category
+  const [category, categoryItems] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Item.find({ category: req.params.id }).sort({ name: 1 }).exec(),
+  ]);
+
+  // if no results: redirect to Categories list
+  if (!category) res.redirect('/inventory/categories');
+
+  res.render('category-detail', {
+    title: 'Delete Category',
+    category,
+    categoryItems,
+    delete: true,
+  });
 });
 
 // handle Category delete on POST

@@ -62,9 +62,8 @@ exports.itemCreateGet = asyncHandler(async (req, res, next) => {
   });
 });
 
-// handle Item create on POST
-exports.itemCreatePost = [
-  // validate and sanitize fields
+// validation & sanitization chain for Item create & update on POST
+const validationChainCreateUpdate = [
   body('name', 'Name must not be empty.')
     .trim()
     .isLength({ min: 1 })
@@ -93,13 +92,19 @@ exports.itemCreatePost = [
     .trim()
     .isLength({ min: 1 })
     .customSanitizer((value) => encode(value)),
+];
+
+// handle Item create on POST
+exports.itemCreatePost = [
+  // validate and sanitize fields
+  ...validationChainCreateUpdate,
 
   // process request after validation and sanitization
   asyncHandler(async (req, res, next) => {
     // extract validation errors from request
     const errors = validationResult(req);
 
-    // create an Item object w/ escaped and trimmed data
+    // create an Item object w/ escaped & trimmed data
     const item = new Item({
       name: req.body.name,
       description: req.body.description,
@@ -168,6 +173,40 @@ exports.itemUpdateGet = asyncHandler(async (req, res, next) => {
 });
 
 // handle Item update on POST
-exports.itemUpdatePost = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Item update POST');
-});
+exports.itemUpdatePost = [
+  // validate and sanitize fields
+  ...validationChainCreateUpdate,
+
+  // process request after validation and sanitization
+  asyncHandler(async (req, res, next) => {
+    // extract validation errors from request
+    const errors = validationResult(req);
+
+    // create an Item object w/ escaped & trimmed data
+    const item = new Item({
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.category,
+      price: req.body.price,
+      quantity: req.body.quantity,
+      _id: req.params.id, // this is required, or a new ID will be assigned!
+    });
+
+    // if errors, render form again w/ sanitized values & error msgs
+    if (!errors.isEmpty()) {
+      // get all categories
+      const allCategories = await Category.find().sort({ name: 1 }).exec();
+
+      res.render('item-create', {
+        title: 'Create Item',
+        categoryList: allCategories,
+        item,
+        errors: errors.array(),
+      });
+    } else {
+      // data from form is valid. Update Item record and redirect to detail page.
+      await Item.findByIdAndUpdate(req.params.id, item, {});
+      res.redirect(item.url);
+    }
+  }),
+];

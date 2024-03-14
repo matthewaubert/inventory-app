@@ -60,9 +60,8 @@ typings/
 # next.js build output
 .next
 
-# header and footer template partials
+# views
 views/partials/header.ejs
 views/partials/footer.ejs
-
-# other views
 views/item-create.ejs
+views/category-create.ejs

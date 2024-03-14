@@ -201,7 +201,7 @@ Today I need to:
 - [ ] Create all forms/views and build out controllers for 'Create' action
   - [x] create item GET
   - [x] create item POST
-  - [ ] create category GET
+  - [x] create category GET
   - [ ] create category POST
 - [ ] Create all forms/views and build out controllers for 'Update' action
   - [ ] update item GET

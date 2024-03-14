@@ -1,0 +1,41 @@
+<%- include('./partials/header') %>
+<h2 class="text-2xl mb-2"><%= title %></h2>
+
+<form action="" method="POST" class="flex flex-col gap-3">
+  <div class="flex flex-col gap-1">
+    <label for="name">Name:</label>
+    <input
+      type="text"
+      id="name"
+      name="name"
+      placeholder="Name of category"
+      class="border border-gray-400 rounded px-2 py-1"
+      required
+      value="<%= locals.category ? decode(category.name) : '' %>"
+    />
+    <% const nameErr = locals.errors ? findError(errors, 'name') : null %>
+    <%- nameErr && include('./partials/error-msg', { msg: nameErr.msg }) %>
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="description">Description:</label>
+    <textarea
+      id="description"  
+      name="description"
+      cols="30"
+      rows="10"
+      placeholder="Description of category"
+      class="border border-gray-400 rounded px-2 py-1"
+      required
+    ><%= locals.category ? decode(category.description) : '' %></textarea>
+    <% const descErr = locals.errors ? findError(errors, 'description') : null %>
+    <%- descErr && include('./partials/error-msg', { msg: descErr.msg }) %>
+  </div>
+  <button
+    type="submit"
+    class="bg-blue-500 hover:bg-blue-600 text-white rounded px-3 py-2 w-fit"
+  >
+    Submit
+  </button>
+</form>
+<%- include('./partials/footer') %>

@@ -215,5 +215,5 @@ Today I need to:
 - [ ] Create all forms/views and build out controllers for 'Update' action
   - [x] update item GET
   - [x] update item POST
-  - [ ] update category GET
+  - [x] update category GET
   - [ ] update category POST

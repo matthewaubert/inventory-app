@@ -21,12 +21,18 @@
   <% } %>
 
   <!-- prettier-ignore -->
-  <%- locals.delete
-    // ensure category has no items before deleting
-    ? categoryItems.length
+  <% if (locals.delete) { %>
+    <%- categoryItems.length
+      // ensure category has no items before deleting
       ? include('./partials/delete-first')
-      : include('./partials/delete-form', { type: 'category', id: category._id})
-    : include('./partials/delete-button', { type: 'category', id: category._id }) %>
+      : include('./partials/delete-form', { type: 'category', id: category._id}) %>
+  <% } else { %>
+  <span class="flex gap-2">
+    <!-- prettier-ignore -->
+    <%- include('./partials/delete-button', { type: 'category', id: category._id }) %>
+    <%- include('./partials/update-button', { type: 'category', id: category._id }) %>
+  </span>
+  <% } %>
 </div>
 
 <%- include('./partials/footer') %>

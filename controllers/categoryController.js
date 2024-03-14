@@ -126,7 +126,18 @@ exports.categoryDeletePost = asyncHandler(async (req, res, next) => {
 
 // display Category update form on GET
 exports.categoryUpdateGet = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Category update GET');
+  // get Category for form
+  const category = await Category.findById(req.params.id).exec();
+  console.log(category);
+
+  // if Category not found, throw error
+  if (!category) {
+    const err = new Error('Category not found');
+    err.status = 404;
+    return next(err);
+  }
+
+  res.render('category-create', { title: 'Update Category', category });
 });
 
 // handle Category update on POST

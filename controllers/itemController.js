@@ -2,6 +2,9 @@ const Item = require('../models/item');
 const Category = require('../models/category');
 
 const asyncHandler = require('express-async-handler');
+const { body, validationResult } = require('express-validator');
+const { encode } = require('he');
+const { sanitizePrice, sanitizeQty } = require('../utils/util');
 
 // display home page
 exports.index = asyncHandler(async (req, res, next) => {
@@ -63,9 +66,75 @@ exports.itemCreateGet = asyncHandler(async (req, res, next) => {
 });
 
 // handle Item create on POST
-exports.itemCreatePost = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Item create POST');
-});
+exports.itemCreatePost = [
+  // validate and sanitize fields
+  body('name', 'Name must not be empty.')
+    .trim()
+    .isLength({ min: 1 })
+    .customSanitizer((value) => encode(value)),
+  body('category', 'Category must not be empty.')
+    .trim()
+    .isLength({ min: 1 })
+    .customSanitizer((value) => encode(value)),
+  body('price')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Price must not be empty.')
+    .isNumeric()
+    .withMessage('Price must be a number.')
+    .customSanitizer((value) => encode(value))
+    .customSanitizer((price) => sanitizePrice(price)), // format price for DB
+  body('quantity')
+    .trim()
+    .isLength({ min: 1 })
+    .withMessage('Quantity must not be empty.')
+    .isNumeric()
+    .withMessage('Quantity must be a number.')
+    .customSanitizer((value) => encode(value))
+    .customSanitizer((qty) => sanitizeQty(qty)), // format qty for DB
+  body('description', 'Description must not be empty.')
+    .trim()
+    .isLength({ min: 1 })
+    .customSanitizer((value) => encode(value)),
+
+  // process request after validation and sanitization
+  asyncHandler(async (req, res, next) => {
+    // extract validation errors from a request
+    const errors = validationResult(req);
+
+    // create an Item object w/ escaped and trimmed data
+    const item = new Item({
+      name: req.body.name,
+      description: req.body.description,
+      category: req.body.category,
+      price: req.body.price,
+      quantity: req.body.quantity,
+    });
+
+    // if errors, render form again w/ sanitized values / error msgs
+    if (!errors.isEmpty()) {
+      // get all categories and items in parallel
+      const [allCategories, allItems] = await Promise.all([
+        Category.find().sort({ name: 1 }).exec(),
+        Item.find().sort({ name: 1 }).exec(),
+      ]);
+
+      console.log(errors.array());
+
+      res.render('item-create', {
+        title: 'Create Item',
+        categoryList: allCategories,
+        itemList: allItems,
+        item,
+        errors: errors.array(),
+      });
+    } else {
+      // data from form is valid. Save Item and redirect to Item page.
+      await item.save();
+      res.redirect(item.url);
+    }
+  }),
+];
 
 // display Item delete form on GET
 exports.itemDeleteGet = asyncHandler(async (req, res, next) => {

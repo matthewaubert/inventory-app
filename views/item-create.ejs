@@ -1,20 +1,26 @@
 <%- include('./partials/header') %>
 <h2 class="text-2xl mb-2"><%= title %></h2>
+
 <form action="" method="POST" class="flex flex-col gap-3">
-  <label class="flex flex-col gap-1">
-    Name:
+  <div class="flex flex-col gap-1">
+    <label for="name">Name:</label>
     <input
       type="text"
+      id="name"
       name="name"
       placeholder="Name of item"
       class="border border-gray-400 rounded px-2 py-1"
       required
       value="<%= locals.item ? decode(item.name) : '' %>"
     />
-  </label>
-  <label class="flex flex-col gap-1">
-    Category:
+    <% const nameErr = locals.errors ? findError(errors, 'name') : null %>
+    <%- nameErr && include('./partials/error-msg', { msg: nameErr.msg }) %>
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="category">Category:</label>
     <select
+      id="category"
       name="category"
       class="border border-gray-400 rounded px-1 py-1"
       required
@@ -27,11 +33,15 @@
       </option>
       <% } %>
     </select>
-  </label>
-  <label class="flex flex-col gap-1">
-    Price:
+    <% const categoryErr = locals.errors ? findError(errors, 'category') : null %>
+    <%- categoryErr && include('./partials/error-msg', { msg: categoryErr.msg }) %>
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="price">Price:</label>
     <input
       type="number"
+      id="price"
       name="price"
       placeholder="Price of item"
       min="0.01"
@@ -40,31 +50,42 @@
       required
       value="<%= locals.item ? item.price : '' %>"
     />
-  </label>
-  <label class="flex flex-col gap-1">
-    Quantity:
+    <% const priceErr = locals.errors ? findError(errors, 'price') : null %>
+    <%- priceErr && include('./partials/error-msg', { msg: priceErr.msg }) %>
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="quantity">Quantity:</label>
     <input
       type="number"
-      placeholder="Quantity of item in stock"
+      id="quantity"
       name="quantity"
+      placeholder="Quantity of item in stock"
       min="1"
       step="1"
       class="border border-gray-400 rounded px-2 py-1"
       required
       value="<%= locals.item ? item.quantity : '' %>"
     />
-  </label>
-  <label class="flex flex-col gap-1">
-    Description:
+    <% const qtyErr = locals.errors ? findError(errors, 'quantity') : null %>
+    <%- qtyErr && include('./partials/error-msg', { msg: qtyErr.msg }) %>
+  </div>
+
+  <div class="flex flex-col gap-1">
+    <label for="description">Description:</label>
     <textarea
+      id="description"  
       name="description"
       cols="30"
       rows="10"
       placeholder="Description of item"
       class="border border-gray-400 rounded px-2 py-1"
       required
-    ><%= locals.item ? item.description : '' %></textarea>
-  </label>
+    ><%= locals.item ? decode(item.description) : '' %></textarea>
+    <% const descErr = locals.errors ? findError(errors, 'description') : null %>
+    <%- descErr && include('./partials/error-msg', { msg: descErr.msg }) %>
+  </div>
+
   <button
     type="submit"
     class="bg-blue-500 hover:bg-blue-600 text-white rounded px-3 py-2 w-fit"

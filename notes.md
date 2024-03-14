@@ -203,13 +203,17 @@ Today I need to:
   - [x] create item POST
   - [x] create category GET
   - [x] create category POST
+
+# 3/14/24
+
+Today I need to:
+- [ ] Create all forms/views and build out controllers for 'Delete' action
+  - [x] delete item GET
+  - [ ] delete item POST
+  - [ ] delete category GET
+  - [ ] delete category POST
 - [ ] Create all forms/views and build out controllers for 'Update' action
   - [ ] update item GET
   - [ ] update item POST
   - [ ] update category GET
   - [ ] update category POST
-- [ ] Create all forms/views and build out controllers for 'Delete' action
-  - [ ] delete item GET
-  - [ ] delete item POST
-  - [ ] delete category GET
-  - [ ] delete category POST

@@ -52,16 +52,12 @@ exports.itemDetail = asyncHandler(async (req, res, next) => {
 
 // display Item create form on GET
 exports.itemCreateGet = asyncHandler(async (req, res, next) => {
-  // get all categories and items in parallel
-  const [allCategories, allItems] = await Promise.all([
-    Category.find().sort({ name: 1 }).exec(),
-    Item.find().sort({ name: 1 }).exec(),
-  ]);
+  // get all categories
+  const allCategories = await Category.find().sort({ name: 1 }).exec();
 
   res.render('item-create', {
     title: 'Create Item',
     categoryList: allCategories,
-    itemList: allItems,
   });
 });
 
@@ -99,7 +95,7 @@ exports.itemCreatePost = [
 
   // process request after validation and sanitization
   asyncHandler(async (req, res, next) => {
-    // extract validation errors from a request
+    // extract validation errors from request
     const errors = validationResult(req);
 
     // create an Item object w/ escaped and trimmed data
@@ -111,20 +107,14 @@ exports.itemCreatePost = [
       quantity: req.body.quantity,
     });
 
-    // if errors, render form again w/ sanitized values / error msgs
+    // if errors, render form again w/ sanitized values & error msgs
     if (!errors.isEmpty()) {
-      // get all categories and items in parallel
-      const [allCategories, allItems] = await Promise.all([
-        Category.find().sort({ name: 1 }).exec(),
-        Item.find().sort({ name: 1 }).exec(),
-      ]);
-
-      console.log(errors.array());
+      // get all categories
+      const allCategories = await Category.find().sort({ name: 1 }).exec();
 
       res.render('item-create', {
         title: 'Create Item',
         categoryList: allCategories,
-        itemList: allItems,
         item,
         errors: errors.array(),
       });

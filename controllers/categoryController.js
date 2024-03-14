@@ -2,7 +2,6 @@ const Category = require('../models/category');
 const Item = require('../models/item');
 
 const asyncHandler = require('express-async-handler');
-const { formatPrice } = require('../utils/util');
 
 // display list of all Categories
 exports.categoryList = asyncHandler(async (req, res, next) => {
@@ -34,7 +33,6 @@ exports.categoryDetail = asyncHandler(async (req, res, next) => {
     title: category.name,
     category,
     categoryItems,
-    formatPrice,
   });
 });
 

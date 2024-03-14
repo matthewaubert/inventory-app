@@ -9,7 +9,7 @@
       placeholder="Name of item"
       class="border border-gray-400 rounded px-2 py-1"
       required
-      value="<%= locals.item ? item.title : '' %>"
+      value="<%= locals.item ? decode(item.name) : '' %>"
     />
   </label>
   <label class="flex flex-col gap-1">
@@ -23,7 +23,7 @@
       <% for (const category of categoryList) { %>
       <% const selected = locals.item && category._id.toString() === item.category._id.toString() ? 'selected' : '' %>
       <option value="<%= category._id %>" <%= selected %>>
-        <%= category.name %>
+        <%= decode(category.name) %>
       </option>
       <% } %>
     </select>

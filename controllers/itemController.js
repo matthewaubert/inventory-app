@@ -2,7 +2,6 @@ const Item = require('../models/item');
 const Category = require('../models/category');
 
 const asyncHandler = require('express-async-handler');
-const { formatPrice } = require('../utils/util');
 
 // display home page
 exports.index = asyncHandler(async (req, res, next) => {
@@ -31,7 +30,6 @@ exports.itemList = asyncHandler(async (req, res, next) => {
   res.render('item-list', {
     title: 'All Items',
     itemList: allItems,
-    formatPrice,
   });
 });
 
@@ -46,7 +44,7 @@ exports.itemDetail = asyncHandler(async (req, res, next) => {
     return next(err);
   }
 
-  res.render('item-detail', { title: item.name, item, formatPrice });
+  res.render('item-detail', { title: item.name, item });
 });
 
 // display Item create form on GET

@@ -4,11 +4,15 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
+const { decode } = require('he');
+const { formatPrice } = require('./utils/util');
 
 const indexRouter = require('./routes/index');
 const inventoryRouter = require('./routes/inventory'); // import routes for 'inventory' area of site
 
 const app = express();
+app.locals.decode = decode;
+app.locals.formatPrice = formatPrice;
 
 // Set up mongoose connection
 const mongoose = require('mongoose');

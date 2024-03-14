@@ -207,11 +207,11 @@ Today I need to:
 # 3/14/24
 
 Today I need to:
-- [ ] Create all forms/views and build out controllers for 'Delete' action
+- [x] Create all forms/views and build out controllers for 'Delete' action
   - [x] delete item GET
-  - [ ] delete item POST
-  - [ ] delete category GET
-  - [ ] delete category POST
+  - [x] delete item POST
+  - [x] delete category GET
+  - [x] delete category POST
 - [ ] Create all forms/views and build out controllers for 'Update' action
   - [ ] update item GET
   - [ ] update item POST

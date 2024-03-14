@@ -84,7 +84,7 @@ exports.categoryCreatePost = [
 
 // display Category delete form on GET
 exports.categoryDeleteGet = asyncHandler(async (req, res, next) => {
-  // get category w/ `_id` that matches `req.params.id` & items in category
+  // get category w/ `_id` that matches `req.params.id` & its items
   const [category, categoryItems] = await Promise.all([
     Category.findById(req.params.id).exec(),
     Item.find({ category: req.params.id }).sort({ name: 1 }).exec(),
@@ -103,7 +103,25 @@ exports.categoryDeleteGet = asyncHandler(async (req, res, next) => {
 
 // handle Category delete on POST
 exports.categoryDeletePost = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Category delete POST');
+  // get category w/ `_id` that matches `req.params.id` & its items
+  const [category, categoryItems] = await Promise.all([
+    Category.findById(req.params.id).exec(),
+    Item.find({ category: req.params.id }).sort({ name: 1 }).exec(),
+  ]);
+
+  // if Category has books: render in same way as for GET route
+  if (categoryItems.length) {
+    res.render('category-detail', {
+      title: 'Delete Category',
+      category,
+      categoryItems,
+      delete: true,
+    });
+  } else {
+    // delete Category and redirect to list of Categories
+    await Category.findByIdAndDelete(req.body.categoryid);
+    res.redirect('/inventory/categories');
+  }
 });
 
 // display Category update form on GET

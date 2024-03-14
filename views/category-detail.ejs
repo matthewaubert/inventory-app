@@ -22,7 +22,10 @@
 
   <!-- prettier-ignore -->
   <%- locals.delete
-    ? include('./partials/delete-form', { type: 'category', id: category._id})
+    // ensure category has no items before deleting
+    ? categoryItems.length
+      ? include('./partials/delete-first')
+      : include('./partials/delete-form', { type: 'category', id: category._id})
     : include('./partials/delete-button', { type: 'category', id: category._id }) %>
 </div>
 

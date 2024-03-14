@@ -44,9 +44,8 @@ exports.categoryCreateGet = asyncHandler(async (req, res, next) => {
   res.render('category-create', { title: 'Create Category' });
 });
 
-// handle Category create on POST
-exports.categoryCreatePost = [
-  // validate and sanitize fields
+// validation & sanitization chain for Category create & update on POST
+const validationChainCreateUpdate = [
   body('name', 'Name must not be empty.')
     .trim()
     .isLength({ min: 1 })
@@ -55,13 +54,19 @@ exports.categoryCreatePost = [
     .trim()
     .isLength({ min: 1 })
     .customSanitizer((value) => encode(value)),
+];
+
+// handle Category create on POST
+exports.categoryCreatePost = [
+  // validate and sanitize fields
+  ...validationChainCreateUpdate,
 
   // process request after validation and sanitization
   asyncHandler(async (req, res, next) => {
     // extract validation errors from request
     const errors = validationResult(req);
 
-    // create a Category object w/ escaped and trimmed data
+    // create a Category object w/ escaped & trimmed data
     const category = new Category({
       name: req.body.name,
       description: req.body.description,
@@ -128,7 +133,6 @@ exports.categoryDeletePost = asyncHandler(async (req, res, next) => {
 exports.categoryUpdateGet = asyncHandler(async (req, res, next) => {
   // get Category for form
   const category = await Category.findById(req.params.id).exec();
-  console.log(category);
 
   // if Category not found, throw error
   if (!category) {
@@ -141,6 +145,32 @@ exports.categoryUpdateGet = asyncHandler(async (req, res, next) => {
 });
 
 // handle Category update on POST
-exports.categoryUpdatePost = asyncHandler(async (req, res, next) => {
-  res.send('NOT IMPLEMENTED: Category update POST');
-});
+exports.categoryUpdatePost = [
+  // validate and sanitize fields
+  ...validationChainCreateUpdate,
+
+  asyncHandler(async (req, res, next) => {
+    // extract validation errors from request
+    const errors = validationResult(req);
+
+    // create a Category object w/ escaped & trimmed data
+    const category = new Category({
+      name: req.body.name,
+      description: req.body.description,
+      _id: req.params.id, // this is required, or a new ID will be assigned!
+    });
+
+    // if errors, render form again w/ sanitized values & error msgs
+    if (!errors.isEmpty()) {
+      res.render('category-create', {
+        title: 'Create Category',
+        category,
+        errors: errors.array(),
+      });
+    } else {
+      // data from form is valid. Update Category record and redirect to detail page.
+      await Category.findByIdAndUpdate(req.params.id, category, {});
+      res.redirect(category.url);
+    }
+  }),
+];

@@ -7,11 +7,17 @@ const ItemSchema = new Schema({
   category: { type: Schema.Types.ObjectId, ref: 'Category', required: true },
   price: { type: Number, required: true },
   quantity: { type: Number, required: true },
+  imgId: { type: String },
 });
 
 // virtual for item's URL
 ItemSchema.virtual('url').get(function () {
   return `/inventory/item/${this._id}`;
+});
+
+// virtual for item's image URL
+ItemSchema.virtual('imgUrl').get(function () {
+  return `/images/${this.imgId}`;
 });
 
 module.exports = mongoose.model('Item', ItemSchema);

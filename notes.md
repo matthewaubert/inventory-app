@@ -73,7 +73,9 @@ Your Inventory app should have categories and items, so when the user goes to th
    - Review the [`multer` middleware documentation]("https://github.com/expressjs/multer")
    - Review the [Cloudinary documentation]("https://cloudinary.com/documentation/node_integration")
 
-1. Deploy the app
+1. Style app and make it responsive
+
+1. Deploy app
 
 ## 3/11/24
 
@@ -217,3 +219,8 @@ Today I need to:
   - [x] update item POST
   - [x] update category GET
   - [x] update category POST
+- [ ] Figure out how to to add and upload images for each item
+  - [x] Review the [`multer` middleware documentation]("https://github.com/expressjs/multer")
+  - [x] Review the [Cloudinary documentation]("https://cloudinary.com/documentation/node_integration")
+  - [x] Add image-uploading functionality to item create & update using Multer
+  - [ ] Hook up to Cloudinary?

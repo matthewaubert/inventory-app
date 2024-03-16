@@ -2,6 +2,9 @@
 <h2 class="text-2xl mb-2">
   <%= locals.delete ? `${title}: ${item.name}` : title %>
 </h2>
+
+<%- item.imgId && include('./partials/item-img', { item }) %>
+
 <div class="flex flex-col gap-2">
   <p class="text-lg">
     <strong>Category:</strong>

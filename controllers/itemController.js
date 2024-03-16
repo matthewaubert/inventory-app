@@ -5,6 +5,7 @@ const asyncHandler = require('express-async-handler');
 const { body, validationResult } = require('express-validator');
 const { encode } = require('he');
 const { sanitizePrice, sanitizeQty } = require('../utils/util');
+const { upload } = require('../utils/multer-config');
 
 // display home page
 exports.index = asyncHandler(async (req, res, next) => {
@@ -96,6 +97,9 @@ const validationChainCreateUpdate = [
 
 // handle Item create on POST
 exports.itemCreatePost = [
+  // set `req.file` value to `image`
+  upload.single('image'),
+
   // validate and sanitize fields
   ...validationChainCreateUpdate,
 
@@ -104,6 +108,8 @@ exports.itemCreatePost = [
     // extract validation errors from request
     const errors = validationResult(req);
 
+    console.log('file: ', req.file);
+
     // create an Item object w/ escaped & trimmed data
     const item = new Item({
       name: req.body.name,
@@ -111,6 +117,7 @@ exports.itemCreatePost = [
       category: req.body.category,
       price: req.body.price,
       quantity: req.body.quantity,
+      imgId: req.file?.filename,
     });
 
     // if errors, render form again w/ sanitized values & error msgs
@@ -174,6 +181,9 @@ exports.itemUpdateGet = asyncHandler(async (req, res, next) => {
 
 // handle Item update on POST
 exports.itemUpdatePost = [
+  // set `req.file` value to `image`
+  upload.single('image'),
+
   // validate and sanitize fields
   ...validationChainCreateUpdate,
 
@@ -182,6 +192,8 @@ exports.itemUpdatePost = [
     // extract validation errors from request
     const errors = validationResult(req);
 
+    console.log('file: ', req.file);
+
     // create an Item object w/ escaped & trimmed data
     const item = new Item({
       name: req.body.name,
@@ -189,6 +201,7 @@ exports.itemUpdatePost = [
       category: req.body.category,
       price: req.body.price,
       quantity: req.body.quantity,
+      imgId: req.file?.filename,
       _id: req.params.id, // this is required, or a new ID will be assigned!
     });
 

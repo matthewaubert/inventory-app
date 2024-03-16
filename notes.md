@@ -219,8 +219,12 @@ Today I need to:
   - [x] update item POST
   - [x] update category GET
   - [x] update category POST
-- [ ] Figure out how to to add and upload images for each item
+- [x] Figure out how to to add and upload images for each item
   - [x] Review the [`multer` middleware documentation]("https://github.com/expressjs/multer")
   - [x] Review the [Cloudinary documentation]("https://cloudinary.com/documentation/node_integration")
   - [x] Add image-uploading functionality to item create & update using Multer
-  - [ ] Hook up to Cloudinary?
+
+# 3/16/24
+Today I need to:
+  - [x] Hook up to Cloudinary
+  - [ ] Style app

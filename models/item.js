@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+const { getImgUrl } = require('../utils/cloudinary');
 
 const ItemSchema = new Schema({
   name: { type: String, required: true, maxLength: 100 },
@@ -17,7 +18,7 @@ ItemSchema.virtual('url').get(function () {
 
 // virtual for item's image URL
 ItemSchema.virtual('imgUrl').get(function () {
-  return `/images/${this.imgId}`;
+  return getImgUrl(this.imgId);
 });
 
 module.exports = mongoose.model('Item', ItemSchema);

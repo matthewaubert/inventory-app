@@ -16,7 +16,7 @@
     <li><strong>Categories of items:</strong> <%= numCategories %></li>
   </ul>
 </div>
-<div class="flex gap-2">
+<div class="flex gap-2 flex-wrap">
   <%- include('./partials/create-button', { type: 'item' }) %>
   <%- include('./partials/create-button', { type: 'category' }) %>
 </div>

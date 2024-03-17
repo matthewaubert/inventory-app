@@ -12,8 +12,23 @@ a {
 
 h1, h2 {
   @apply font-serif;
+  @apply font-semibold;
+}
+
+h2 {
+  @apply text-2xl;
 }
 
 h3, h4, h5, h6, p, div, li {
   @apply font-sans;
+}
+
+input[type=text],
+input[type=number],
+textarea {
+  @apply hover:shadow-[inset_0_0_5px_rgb(0,0,0,0.2)];
+}
+
+::-webkit-file-upload-button {
+  @apply hover:cursor-pointer;
 }

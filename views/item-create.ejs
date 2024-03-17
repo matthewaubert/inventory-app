@@ -1,5 +1,5 @@
 <%- include('./partials/header') %>
-<h2 class="text-2xl mb-2"><%= title %></h2>
+<h2><%= title %></h2>
 
 <form
   action=""
@@ -27,7 +27,7 @@
     <select
       id="category"
       name="category"
-      class="border border-gray-400 rounded px-1 py-1"
+      class="border border-gray-400 rounded px-1 py-1 hover:cursor-pointer"
       required
     >
       <option value="">--Please select a category--</option>
@@ -98,6 +98,7 @@
       name="image"
       id="image"
       accept="image/*"
+      class="hover:cursor-pointer"
     />
   </div>
 

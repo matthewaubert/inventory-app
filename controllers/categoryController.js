@@ -8,13 +8,20 @@ const { encode } = require('he');
 // display list of all Categories
 exports.categoryList = asyncHandler(async (req, res, next) => {
   // get all categories
-  const allCategories = await Category.find({}, 'name')
-    .sort({ name: 1 })
-    .exec();
+  const [allCategories, itemCountByCategoryArr] = await Promise.all([
+    Category.find({}, 'name').sort({ name: 1 }).exec(),
+    Item.aggregate().sortByCount('category'),
+  ]);
+
+  const itemCountByCategory = {};
+  itemCountByCategoryArr.forEach((category) => {
+    itemCountByCategory[category._id] = category.count;
+  });
 
   res.render('category-list', {
     title: 'All Categories',
     categoryList: allCategories,
+    itemCountByCategory,
   });
 });
 
@@ -33,7 +40,7 @@ exports.categoryDetail = asyncHandler(async (req, res, next) => {
   }
 
   res.render('category-detail', {
-    title: category.name,
+    title: 'Category',
     category,
     categoryItems,
   });

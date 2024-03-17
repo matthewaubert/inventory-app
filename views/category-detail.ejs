@@ -1,11 +1,25 @@
 <%- include('./partials/header') %>
-<h2><%= locals.delete ? `${title}: ${category.name}` : title %></h2>
+<h2><%= `${title}: ${decode(category.name)}` %></h2>
 <p><%= decode(category.description) %></p>
 
-<div class="flex flex-col gap-5">
-  <h3 class="text-lg font-bold">Items</h3>
+<!-- prettier-ignore -->
+<% if (locals.delete) { %>
+  <%- categoryItems.length
+    // ensure category has no items before deleting
+    ? include('./partials/delete-first')
+    : include('./partials/delete-form', { type: 'category', id: category._id}) %>
+<% } else { %>
+<span class="flex gap-2 mb-4">
+  <!-- prettier-ignore -->
+  <%- include('./partials/delete-button', { type: 'category', id: category._id }) %>
+  <%- include('./partials/update-button', { type: 'category', id: category._id }) %>
+</span>
+<% } %>
+
+<ul class="flex flex-col gap-4">
+  <h3 class="-mb-2">Items</h3>
   <% if (categoryItems.length) { for (const item of categoryItems) { %>
-  <div
+  <li
     class="grid gap-4 grid-cols-[min(33%,_144px)_1fr] md:grid-cols-[min(25%,_144px)_1fr]"
   >
     <img
@@ -14,30 +28,18 @@
       class="max-h-[144px] justify-self-center"
     />
     <div>
-      <h3 class="leading-snug font-bold">
+      <h4>
         <a href="<%= item.url %>" class="text-blue-500 hover:text-blue-600">
           <%= decode(item.name) %>
         </a>
-      </h3>
+      </h4>
       <div><strong>Price:</strong> <%= formatPrice(item.price) %></div>
       <div><strong>In stock:</strong> <%= item.quantity %></div>
     </div>
-  </div>
+  </li>
   <% } } else { %>
   <p>This category has no items.</p>
   <% } %>
-</div>
+</ul>
 
-<!-- prettier-ignore -->
-<% if (locals.delete) { %>
-    <%- categoryItems.length
-      // ensure category has no items before deleting
-      ? include('./partials/delete-first')
-      : include('./partials/delete-form', { type: 'category', id: category._id}) %>
-  <% } else { %>
-<span class="flex gap-2 mt-4">
-  <!-- prettier-ignore -->
-  <%- include('./partials/delete-button', { type: 'category', id: category._id }) %>
-    <%- include('./partials/update-button', { type: 'category', id: category._id }) %>
-</span>
-<% } %> <%- include('./partials/footer') %>
+<%- include('./partials/footer') %>

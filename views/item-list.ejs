@@ -1,19 +1,26 @@
 <%- include('./partials/header') %>
-<h2 class="text-2xl mb-2"><%= title %></h2>
+<h2><%= title %></h2>
+<!-- prettier-ignore -->
 <%- include('./partials/create-button', { type: 'item' }) %>
 <% if (itemList.length) { %>
-<ul>
+<section
+  class="grid gap-x-7 gap-y-5 items-end grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))]"
+>
   <% for (const item of itemList) { %>
-  <li>
-    <strong>
-      <a href="<%= item.url %>" class="text-blue-500 hover:text-blue-600">
-        <%= decode(item.name) %>
-      </a>
-    </strong>
-    <%= formatPrice(item.price) %>
-  </li>
+  <div class="flex flex-col gap-2">
+    <img
+      src="<%= item.imgId ? item.imgUrl : 'https://placehold.co/600x400?font=roboto&text=No+image+available' %>"
+      alt=""
+    />
+    <a
+      href="<%= item.url %>"
+      class="text-blue-500 hover:text-blue-600 min-h-[2.75rem] leading-snug font-bold"
+    >
+      <%= decode(item.name) %>
+    </a>
+  </div>
   <% } %>
-</ul>
+</section>
 <% } else { %>
 <p>There are no books.</p>
 <% } %> <%- include('./partials/footer') %>

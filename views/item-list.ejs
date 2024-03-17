@@ -3,21 +3,33 @@
 <!-- prettier-ignore -->
 <%- include('./partials/create-button', { type: 'item' }) %>
 <% if (itemList.length) { %>
-<section
-  class="grid gap-x-7 gap-y-5 items-end grid-cols-[repeat(auto-fill,_minmax(17rem,_1fr))]"
->
+<!-- class="grid gap-x-7 gap-y-5 items-end grid-cols-[repeat(auto-fill,_minmax(25rem,_1fr))]" -->
+<section class="flex flex-col gap-5">
   <% for (const item of itemList) { %>
-  <div class="flex flex-col gap-2">
+  <div class="grid gap-4 grid-cols-[min(33%,_144px)_1fr] md:grid-cols-[min(25%,_144px)_1fr]">
     <img
-      src="<%= item.imgId ? item.imgUrl : 'https://placehold.co/600x400?font=roboto&text=No+image+available' %>"
+      src="<%= item.imgId ? item.imgUrl : 'https://placehold.co/240x160?font=roboto&text=No+image' %>"
       alt=""
+      class="max-h-[144px] justify-self-center"
     />
-    <a
-      href="<%= item.url %>"
-      class="text-blue-500 hover:text-blue-600 min-h-[2.75rem] leading-snug font-bold"
-    >
-      <%= decode(item.name) %>
-    </a>
+    <div>
+      <h3 class="leading-snug font-bold">
+        <a href="<%= item.url %>" class="text-blue-500 hover:text-blue-600">
+          <%= decode(item.name) %>
+        </a>
+      </h3>
+      <div>
+        <strong>Category:</strong>
+        <a
+          href="<%= item.category.url %>"
+          class="text-blue-500 hover:text-blue-600"
+        >
+          <%= decode(item.category.name) %>
+        </a>
+      </div>
+      <div><strong>Price:</strong> <%= formatPrice(item.price) %></div>
+      <div><strong>In stock:</strong> <%= item.quantity %></div>
+    </div>
   </div>
   <% } %>
 </section>

@@ -20,6 +20,10 @@ h2 {
   @apply leading-tight;
 }
 
+h3 {
+  @apply text-lg;
+}
+
 h3, h4, h5, h6, p, div, li {
   @apply font-sans;
 }

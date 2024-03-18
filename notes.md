@@ -227,4 +227,11 @@ Today I need to:
 # 3/16/24
 Today I need to:
   - [x] Hook up to Cloudinary
-  - [ ] Style app
+
+# 3/17/24
+Today I need to:
+  - [x] Style app
+  - [ ] Find images for all items
+  - [ ] Update `populatedb.js` script to: upload images to Cloudinary and add url to database
+  - [ ] Create production database
+  - [ ] Deploy app

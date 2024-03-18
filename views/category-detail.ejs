@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 <h2><%= `${title}: ${decode(category.name)}` %></h2>
-<p><%= decode(category.description) %></p>
+<p class="max-w-3xl"><%= decode(category.description) %></p>
 
 <!-- prettier-ignore -->
 <% if (locals.delete) { %>

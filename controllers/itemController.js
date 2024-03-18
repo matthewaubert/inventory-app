@@ -31,7 +31,10 @@ exports.index = asyncHandler(async (req, res, next) => {
 // display list of all Items
 exports.itemList = asyncHandler(async (req, res, next) => {
   // get all items
-  const allItems = await Item.find().populate('category').sort({ name: 1 }).exec();
+  const allItems = await Item.find()
+    .populate('category')
+    .sort({ name: 1 })
+    .exec();
 
   res.render('item-list', {
     title: 'All Items',
@@ -100,6 +103,16 @@ const validationChainCreateUpdate = [
 // handle Item create on POST
 exports.itemCreatePost = [
   // set `req.file` value to image
+  // e.g. req.file = {
+  //   fieldname: 'image',
+  //   originalname: 'osprey-exos-55.jpg',
+  //   encoding: '7bit',
+  //   mimetype: 'image/jpeg',
+  //   destination: './public/images/',
+  //   filename: 'osprey-exos-55-1710465472296.jpeg',
+  //   path: 'public/images/osprey-exos-55-1710465472296.jpeg',
+  //   size: 97273,
+  // };
   upload.single('image'),
 
   // validate and sanitize fields
@@ -110,7 +123,6 @@ exports.itemCreatePost = [
     // extract validation errors from request
     const errors = validationResult(req);
 
-    // console.log('file: ', req.file);
     let imgId; // will be set to Cloudinary `public_id` or `null`
     // if user uploaded an image:
     if (req.file) {
@@ -210,7 +222,6 @@ exports.itemUpdatePost = [
     // extract validation errors from request
     const errors = validationResult(req);
 
-    // console.log('file:', req.file);
     // get old item from database
     const oldItem = await Item.findById(req.params.id);
     let imgId; // will be set to Cloudinary `public_id` or `null`

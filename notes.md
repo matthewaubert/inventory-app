@@ -238,5 +238,5 @@ Today I need to:
 Today I need to:
   - [x] Update `populatedb.js` script to: upload images to Cloudinary and add url to database
   - [x] Create production database
-  - [ ] Last code changes / clean up code
-  - [ ] Deploy app
+  - [x] Last code changes / clean up code
+  - [x] Deploy app

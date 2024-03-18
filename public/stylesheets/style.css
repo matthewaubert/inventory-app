@@ -569,32 +569,16 @@ video {
   margin-bottom: 2rem;
 }
 
+.ml-6 {
+  margin-left: 1.5rem;
+}
+
 .mt-2 {
   margin-top: 0.5rem;
 }
 
 .mt-4 {
   margin-top: 1rem;
-}
-
-.ml-3 {
-  margin-left: 0.75rem;
-}
-
-.ml-2 {
-  margin-left: 0.5rem;
-}
-
-.ml-4 {
-  margin-left: 1rem;
-}
-
-.ml-8 {
-  margin-left: 2rem;
-}
-
-.ml-6 {
-  margin-left: 1.5rem;
 }
 
 .block {
@@ -630,24 +614,8 @@ video {
   width: fit-content;
 }
 
-.max-w-\[1360px\] {
-  max-width: 1360px;
-}
-
-.max-w-screen-xl {
-  max-width: 1280px;
-}
-
-.max-w-lg {
-  max-width: 32rem;
-}
-
-.max-w-md {
-  max-width: 28rem;
-}
-
-.max-w-screen-lg {
-  max-width: 900px;
+.max-w-3xl {
+  max-width: 48rem;
 }
 
 .max-w-\[1080px\] {
@@ -658,28 +626,12 @@ video {
   max-width: 1160px;
 }
 
-.max-w-xl {
-  max-width: 36rem;
-}
-
-.max-w-2xl {
-  max-width: 42rem;
-}
-
-.max-w-3xl {
-  max-width: 48rem;
-}
-
-.list-inside {
-  list-style-position: inside;
+.max-w-lg {
+  max-width: 32rem;
 }
 
 .list-disc {
   list-style-type: disc;
-}
-
-.list-decimal {
-  list-style-type: decimal;
 }
 
 .grid-cols-\[min\(33\%\2c _144px\)_1fr\] {
@@ -811,11 +763,6 @@ video {
   line-height: 2rem;
 }
 
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
-}
-
 .text-base {
   font-size: 1rem;
   line-height: 1.5rem;
@@ -937,10 +884,6 @@ textarea:hover {
     gap: 1rem;
   }
 
-  .sm\:gap-5 {
-    gap: 1.25rem;
-  }
-
   .sm\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -950,10 +893,6 @@ textarea:hover {
 @media (min-width: 768px) {
   .md\:grid-cols-\[min\(25\%\2c _144px\)_1fr\] {
     grid-template-columns: min(25%, 144px) 1fr;
-  }
-
-  .md\:gap-5 {
-    gap: 1.25rem;
   }
 
   .md\:gap-6 {

@@ -1,7 +1,12 @@
 #! /usr/bin/env node
 
+require('dotenv').config();
+const cloudinary = require('./utils/cloudinary');
+
 console.log(
-  'This script populates some test items and categories to your database. Specify the database connection string as an argument - e.g. node populatedb "mongodb+srv://cooluser:coolpassword@cluster0.lz91hw2.mongodb.net/inventory_app?retryWrites=true&w=majority&appName=Cluster0"',
+  'This script populates some test items and categories to your database.',
+  'Specify the database connection string as an argument',
+  'e.g. node populatedb "mongodb+srv://cooluser:coolpassword@cluster0.lz91hw2.mongodb.net/cool_project?retryWrites=true&w=majority&appName=Cluster0"',
 );
 
 // get arguments passed on the command line
@@ -46,7 +51,7 @@ async function createCategories() {
 async function createItems() {
   console.log('Adding items');
   await Promise.all(
-    exampleData.items.map((item, index) =>
+    exampleData.items.map(async (item, index) =>
       itemCreate(
         index,
         item.name,
@@ -55,6 +60,8 @@ async function createItems() {
         categories[findIndexByName(exampleData.categories, item.category)],
         item.price,
         item.quantity,
+        // upload img to Cloudinary and get its `public_id`
+        await cloudinary.uploadImg(`public/images/${item.imgId}`),
       ),
     ),
   );
@@ -70,8 +77,23 @@ async function categoryCreate(index, name, description) {
   console.log(`Added category: ${name}`);
 }
 
-async function itemCreate(index, name, description, category, price, quantity) {
-  const item = new Item({ name, description, category, price, quantity });
+async function itemCreate(
+  index,
+  name,
+  description,
+  category,
+  price,
+  quantity,
+  imgId,
+) {
+  const item = new Item({
+    name,
+    description,
+    category,
+    price,
+    quantity,
+    imgId,
+  });
   await item.save();
   items[index] = item;
   console.log(`Added item: ${name}`);

@@ -34,14 +34,16 @@ module.exports.items = [
     category: 'Camp & Hike',
     price: 275,
     quantity: 5,
+    imgId: 'sixmoons-skyscapetrekker.jpg',
   },
   {
-    name: 'Gossamer Gear 60 Backpack',
+    name: 'Gossamer Gear Mariposa 60 Backpack',
     description:
       "This award-winning pack's roomy main pocket holds your shelter, clothing, sleeping pad and food. There are seven extra pockets - one mesh for wet stuff, two easy-to-reach for water and high-energy snacks, and the rest for whatever else.  Made of custom 100 and 200 denier Robic nylon fabric, this tough, light pack delivers a very comfortable carry even when overloaded with 35 pounds of gear.",
     category: 'Camp & Hike',
     price: 285,
     quantity: 5,
+    imgId: 'gossamergear-mariposa-60.jpg',
   },
   {
     name: 'Enlightened Equipment Enigma Sleeping Quilt 850FP',
@@ -49,6 +51,7 @@ module.exports.items = [
     category: 'Camp & Hike',
     price: 355,
     quantity: 8,
+    imgId: 'englightenedequipment-enigma-quilt.jpg',
   },
   {
     name: 'Therm-a-Rest NeoAir XLite NXT Sleeping Pad',
@@ -57,6 +60,7 @@ module.exports.items = [
     category: 'Camp & Hike',
     price: 209.95,
     quantity: 12,
+    imgId: 'thermarest-neoairxlite.jpg',
   },
   {
     name: 'Toaks Titanium 750ml Pot',
@@ -65,6 +69,7 @@ module.exports.items = [
     category: 'Camp & Hike',
     price: 26,
     quantity: 26,
+    imgId: 'toaks-titaniumpot750.png',
   },
   {
     name: 'MSR PocketRocket 2 Stove',
@@ -73,6 +78,16 @@ module.exports.items = [
     category: 'Camp & Hike',
     price: 49.95,
     quantity: 18,
+    imgId: 'msr-pocketrocket-2-stove.jpg',
+  },
+  {
+    name: 'Osprey Exos 55 Pro 55L Backpack',
+    description:
+      'Nearly a pound lighter than the Exos 58 and featuring a more fine-tuned adjustment system, the 55-liter Exos Pro is the most comfortable ultralight thru-hike backpack in its weight class. A highly-ventilated AirSpeed™ backpanel supports light loads with ease while maintaining maximum airflow across your back, making it an ideal pack for your most long-distance endeavors on the Appalachian Trail, Pacific Crest Trail and beyond.',
+    category: 'Camp & Hike',
+    price: 289.95,
+    quantity: 6,
+    imgId: 'osprey-exospro55.jpg',
   },
   {
     name: 'La Sportiva Tarantulace Climbing Shoes',
@@ -81,6 +96,7 @@ module.exports.items = [
     category: 'Climb',
     price: 89,
     quantity: 23,
+    imgId: 'lasportiva-tarantulace.jpg',
   },
   {
     name: 'Black Diamond Momentum Harness',
@@ -89,6 +105,7 @@ module.exports.items = [
     category: 'Climb',
     price: 64.95,
     quantity: 31,
+    imgId: 'blackdiamond-momentum-harness.jpg',
   },
   {
     name: 'Mammut Crag We Care Classic Rope 9.5 mm x 60 m',
@@ -97,6 +114,7 @@ module.exports.items = [
     category: 'Climb',
     price: 164.95,
     quantity: 16,
+    imgId: 'mammut-cragwecare-rope.jpg',
   },
   {
     name: 'Petzl Reverso Belay Device',
@@ -105,6 +123,7 @@ module.exports.items = [
     category: 'Climb',
     price: 39.95,
     quantity: 34,
+    imgId: 'petzl-reverso.jpeg',
   },
   {
     name: 'Cannondale Habit LT 2 Mountain Bike',
@@ -113,6 +132,7 @@ module.exports.items = [
     category: 'Cycle',
     price: 3625,
     quantity: 3,
+    imgId: 'cannondale-habitlt2.jpeg',
   },
   {
     name: 'Smith Convoy MIPS Bike Helmet',
@@ -121,6 +141,7 @@ module.exports.items = [
     category: 'Cycle',
     price: 85,
     quantity: 24,
+    imgId: 'smith-convoy-helmet.jpg',
   },
   {
     name: 'Ortlieb Back-Roller Panniers - Pair',
@@ -129,6 +150,7 @@ module.exports.items = [
     category: 'Cycle',
     price: 200,
     quantity: 13,
+    imgId: 'ortlieb-backroller-panniers.jpg',
   },
   {
     name: 'Bontrager Commuter Comp Bike Saddle',
@@ -137,6 +159,7 @@ module.exports.items = [
     category: 'Cycle',
     price: 52,
     quantity: 19,
+    imgId: 'bontrager-commutercomp-bikesaddle.png',
   },
   {
     name: 'Nordica Enforcer 94 Unlimited Skis - 2023/2034',
@@ -145,6 +168,7 @@ module.exports.items = [
     category: 'Snow',
     price: 799.95,
     quantity: 3,
+    imgId: 'nordica-enforcer94-skis2023.png',
   },
   {
     name: 'MSR Lightning Ascent Snowshoes',
@@ -153,6 +177,7 @@ module.exports.items = [
     category: 'Snow',
     price: 389.95,
     quantity: 7,
+    imgId: 'msr-lightningascent.jpg',
   },
   {
     name: 'Black Diamond Recon X Avy Safety Set',
@@ -161,6 +186,7 @@ module.exports.items = [
     category: 'Snow',
     price: 449.95,
     quantity: 4,
+    imgId: 'blackdiamond-reconx-avysafety.jpg',
   },
   {
     name: 'Hillsound Trail Crampon Ultra',
@@ -169,6 +195,7 @@ module.exports.items = [
     category: 'Snow',
     price: 89.95,
     quantity: 17,
+    imgId: 'hillsound-trailcramponultra.jpg',
   },
   {
     name: 'Rossignol Soulside Snowboard with Soulside Bindings - 2023/2024',
@@ -177,6 +204,7 @@ module.exports.items = [
     category: 'Snow',
     price: 599.95,
     quantity: 2,
+    imgId: 'rossignol-soulside-snowboard.jpg',
   },
   {
     name: 'Aquaglide Deschutes 110 Inflatable Kayak',
@@ -185,6 +213,7 @@ module.exports.items = [
     category: 'Water',
     price: 549.95,
     quantity: 7,
+    imgId: 'aquaglide-deschutes110.jpeg',
   },
   {
     name: 'Astral E-Ronny PFD',
@@ -193,6 +222,7 @@ module.exports.items = [
     category: 'Water',
     price: 135,
     quantity: 23,
+    imgId: 'astral-eronny.png',
   },
   {
     name: 'Oakley Holbrook Sunglasses',
@@ -201,5 +231,6 @@ module.exports.items = [
     category: 'Water',
     price: 217,
     quantity: 15,
+    imgId: 'oakley-holbrook-sunglasses.png',
   },
 ];

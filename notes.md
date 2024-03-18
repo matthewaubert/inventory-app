@@ -232,7 +232,11 @@ Today I need to:
 Today I need to:
   - [x] Style app
   - [x] Add favicon
-  - [ ] Find images for all items
-  - [ ] Update `populatedb.js` script to: upload images to Cloudinary and add url to database
-  - [ ] Create production database
+  - [x] Find images for all items
+
+# 3/18/24
+Today I need to:
+  - [x] Update `populatedb.js` script to: upload images to Cloudinary and add url to database
+  - [x] Create production database
+  - [ ] Last code changes / clean up code
   - [ ] Deploy app

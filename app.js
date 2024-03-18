@@ -18,7 +18,7 @@ app.locals.formatPrice = formatPrice;
 // Set up mongoose connection
 const mongoose = require('mongoose');
 mongoose.set('strictQuery', false);
-const mongoDB = process.env.MONGODB_URI_DEV;
+const mongoDB = process.env.MONGODB_URI_PROD || process.env.MONGODB_URI_DEV;
 
 main().catch((err) => console.log(err));
 async function main() {

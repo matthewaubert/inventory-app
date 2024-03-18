@@ -6,6 +6,7 @@ module.exports.uploadImg = async (imagePath) => {
     use_filename: true, // sets the public ID to the filename of the uploaded file
     unique_filename: false, // doesn't apply random characters to the public ID to ensure uniqueness
     overwrite: true, // overwrites any image with the same public ID on upload
+    folder: 'inventory-app',
   };
 
   try {
@@ -25,6 +26,6 @@ module.exports.deleteImg = async (publicId) => {
   } catch (error) {
     console.error(error);
   }
-}
+};
 
 module.exports.getImgUrl = cloudinary.url;

@@ -231,6 +231,7 @@ Today I need to:
 # 3/17/24
 Today I need to:
   - [x] Style app
+  - [x] Add favicon
   - [ ] Find images for all items
   - [ ] Update `populatedb.js` script to: upload images to Cloudinary and add url to database
   - [ ] Create production database

@@ -3,7 +3,6 @@
 **[Click here to view the live site](https://inventory-app-ma.glitch.me)**
 
 [![screenshot of home page](docs/images/home-page.png)](https://inventory-app-ma.glitch.me 'home page')
-[![screenshot of item list page](docs/images/item-list-page.png)](https://inventory-app-ma.glitch.me/inventory/items 'item list page')
 [![screenshot of item create page](docs/images/item-create-page.png)](https://inventory-app-ma.glitch.me/inventory/item/create 'item create page')
 [![screenshot of item detail page](docs/images/item-detail-page.png)](https://inventory-app-ma.glitch.me/inventory/item/65f87123ea22c223be6a4bc7 'item detail page')
 

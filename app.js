@@ -9,11 +9,33 @@ const { findError, formatPrice } = require('./utils/util');
 
 const indexRouter = require('./routes/index');
 const inventoryRouter = require('./routes/inventory'); // import routes for 'inventory' area of site
+const compression = require('compression');
+const helmet = require('helmet');
 
 const app = express();
 app.locals.decode = decode;
 app.locals.findError = findError;
 app.locals.formatPrice = formatPrice;
+
+// set up rate limiter: max of 20 requests per minute
+const RateLimit = require('express-rate-limit');
+const limiter = RateLimit({
+  windowMs: 1 * 60 * 1000, // 1 min
+  max: 20,
+});
+app.use(limiter); // apply rate limiter to all requests
+
+// add helmet to the middleware chain
+// set CSP headers to allow images from Cloudinary
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        'img-src': ["'self'", 'data:', 'https://res.cloudinary.com'],
+      },
+    },
+  }),
+);
 
 // Set up mongoose connection
 const mongoose = require('mongoose');
@@ -33,6 +55,8 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(compression()); // compress all routes
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);

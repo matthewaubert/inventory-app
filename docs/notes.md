@@ -55,7 +55,7 @@ Your Inventory app should have categories and items, so when the user goes to th
 
 1. Decide on a templating language: EJS
 
-1. [Create a new Express app]("https://developer.mozilla.org/en-US/docs/Learn/Server-side/Express_Nodejs/Tutorial_local_library_website")
+1. [Create a new Express app]("https://gist.github.com/matthewaubert/c7b652d2c25be2b09cc9c82316d9652c")
 
 1. Create a new MongoDB collection using the web user interface
 
